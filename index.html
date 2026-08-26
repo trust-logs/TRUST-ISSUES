@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NaijaPay — Nigerian Banking Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">₦</span><span>NaijaPay</span></div>
+      <nav>
+        <button class="nav-item active" data-page="home">⌂ <span>Home</span></button>
+        <button class="nav-item" data-page="transfer">↗ <span>Transfer</span></button>
+        <button class="nav-item" data-page="airtime">◉ <span>Airtime & Data</span></button>
+        <button class="nav-item" data-page="bills">▣ <span>Bills</span></button>
+        <button class="nav-item" data-page="history">◷ <span>Transactions</span></button>
+      </nav>
+      <div class="sidebar-note">Demo wallet only<br />No real money moves.</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">Wednesday, August 26</p><h1 id="pageTitle">Good afternoon, Chukwudi</h1></div>
+        <div class="avatar">C</div>
+      </header>
+
+      <section id="home" class="page active-page">
+        <div class="balance-card">
+          <div><span class="muted">Available balance</span><div class="balance" id="balance">₦245,800.00</div></div>
+          <button class="ghost" id="toggleBalance">Hide</button>
+        </div>
+        <div class="quick-actions">
+          <button class="action" data-page="transfer"><b>↗</b><span>Transfer</span></button>
+          <button class="action" data-page="airtime"><b>◉</b><span>Airtime/Data</span></button>
+          <button class="action" data-page="bills"><b>▣</b><span>Pay Bills</span></button>
+          <button class="action" id="addMoney"><b>＋</b><span>Add Money</span></button>
+        </div>
+        <div class="section-head"><h2>Recent transactions</h2><button class="link" data-page="history">See all</button></div>
+        <div class="transactions" id="recentTransactions"></div>
+      </section>
+
+      <section id="transfer" class="page">
+        <div class="panel form-panel">
+          <h2>Send money</h2><p class="muted">Transfer to a Nigerian bank account.</p>
+          <form id="transferForm">
+            <label>Bank<select id="bank" required><option value="">Select bank</option><option>Access Bank</option><option>GTBank</option><option>First Bank</option><option>UBA</option><option>Zenith Bank</option><option>OPay</option><option>Kuda</option><option>Palmpay</option></select></label>
+            <label>Account number<input id="account" inputmode="numeric" maxlength="10" placeholder="0123456789" required /></label>
+            <label>Amount<input id="amount" type="number" min="100" step="100" placeholder="₦0.00" required /></label>
+            <label>Description<input id="description" maxlength="50" placeholder="What is this for?" /></label>
+            <button class="primary" type="submit">Continue transfer</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="airtime" class="page">
+        <div class="panel form-panel">
+          <h2>Airtime & Data</h2><p class="muted">Top up Nigerian mobile networks.</p>
+          <form id="airtimeForm">
+            <label>Network<select id="network" required><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select></label>
+            <label>Phone number<input id="phone" inputmode="tel" maxlength="11" placeholder="08012345678" required /></label>
+            <label>Type<select id="topupType"><option>Airtime</option><option>Data — 1GB</option><option>Data — 2GB</option><option>Data — 5GB</option></select></label>
+            <label>Amount<input id="topupAmount" type="number" min="100" step="50" placeholder="₦1,000" required /></label>
+            <button class="primary" type="submit">Buy now</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="bills" class="page">
+        <div class="panel form-panel">
+          <h2>Pay bills</h2><p class="muted">A demo interface for common Nigerian bills.</p>
+          <form id="billForm">
+            <label>Bill type<select id="billType"><option>Electricity — EEDC</option><option>Electricity — AEDC</option><option>Electricity — IKEDC</option><option>TV — DStv</option><option>TV — GOtv</option><option>Internet</option></select></label>
+            <label>Customer / Meter number<input id="customer" inputmode="numeric" placeholder="Enter reference number" required /></label>
+            <label>Amount<input id="billAmount" type="number" min="100" step="100" placeholder="₦5,000" required /></label>
+            <button class="primary" type="submit">Pay bill</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="history" class="page">
+        <div class="section-head"><h2>Transaction history</h2></div>
+        <div class="transactions" id="allTransactions"></div>
+      </section>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
